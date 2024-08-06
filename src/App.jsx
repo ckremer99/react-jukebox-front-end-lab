@@ -1,8 +1,18 @@
-import { useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Home from './components/home.jsx'
+
 
 const App = () => {
-  return <h1>Hello world!</h1>;
+  
+  
+  return(
+  <>
+  <Routes>
+    <Route path='/' element={<Home tracks={tracks}/>}/>
+  </Routes>
+  </>
+  )
 };
 
 export default App;
