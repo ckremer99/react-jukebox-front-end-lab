@@ -28,10 +28,10 @@ const create = async (trackFormData) => {
 const deleteTrack = async (trackId) => {
 
     try {
-        const res = await fetch(`${BASE_URL}/${trackId}`, {
+        const res = await fetch(`/${BASE_URL}/${trackId}`, {
             method: 'DELETE'
         })
-        return res.json();
+        return await res.json();
     } catch (error) {
         console.log(error)
     }
