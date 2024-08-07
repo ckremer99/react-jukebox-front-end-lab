@@ -25,11 +25,14 @@ const handleAddTrack = async (trackFormData) => {
   navigate('/')
 }
 
+const handleDeleteTrack = async (trackId) => {
+  const response = await trackService.deleteTrack(trackId)
+}
 
   return (
     <>
       <Routes>
-        <Route path='/' element={<Home tracks={tracks} />}/>
+        <Route path='/' element={<Home tracks={tracks} handleDeleteTrack={handleDeleteTrack}/>}/>
         <Route path='/add-track' element={<TrackForm formType={"Create"} handleAddTrack={handleAddTrack}/>}/>
         <Route path='/edit-track/:trackId' element={<TrackForm formType={"Edit"}/>}/>
       </Routes>

@@ -36,7 +36,7 @@ const TrackForm = (props) => {
                     id="artist"
                     value={formData.artist}
                     onChange={handleChange} />
-                <button>Submit</button>
+                <button type="submit">Submit</button>
             </form>
         </>
     )
