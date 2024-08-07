@@ -9,7 +9,7 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route path='/' element={<Home tracks={tracks}/>}/>
+        <Route path='/' element={<Home />}/>
         <Route path='/add-track' element={<TrackForm formType={"Create"}/>}/>
         <Route path='/edit-track/:trackId' element={<TrackForm formType={"Edit"}/>}/>
       </Routes>

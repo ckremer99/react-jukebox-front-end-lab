@@ -1,13 +1,13 @@
-const Tracklist = (props) => {
+import { useState } from "react";
+
+const Tracklist = () => {
     return (
         <>
         <ul>
-            {props.tracks.map((currentTrack) => (
-                <li key={currentTrack.title} class='track'>
-                    <Link to={`/tracks/${currentTrack._id}`}>
-                    {currentTrack.title}
-                    </Link>
-                    {currentTrack.artist}
+            {tracks.map((currentTrack, index) => (
+                <li key={index} className='track'>
+                    <h3>{currentTrack.title}</h3>
+                    <p>{currentTrack.artist}</p>
                 </li>
             ))}
         </ul>
