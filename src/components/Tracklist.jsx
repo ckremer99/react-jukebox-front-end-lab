@@ -6,16 +6,16 @@ const Tracklist = ({tracks, handleDeleteTrack}) => {{
 
     return (
         <>
-        <ul>
+        <div>
         
             {tracks.map((track) => 
-                <li key={track._id} className='track-card'>
+                <div key={track._id} className='track-card'>
                     <h3>{track.title}</h3>
                     <p>{track.artist}</p>
-                </li>
+                </div>
             )}
        
-        </ul>
+        </div>
         </>
     )}
 };
