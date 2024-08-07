@@ -1,6 +1,4 @@
-import { useState } from "react";
-
-const Tracklist = () => {
+const Tracklist = ({tracks}) => {
     return (
         <>
         <ul>
