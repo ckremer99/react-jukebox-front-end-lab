@@ -9,9 +9,6 @@ const Tracklist = ({tracks, setTracks}) => {
                 <li key={index} className='track'>
                     <h3>{currentTrack.title}</h3>
                     <p>{currentTrack.artist}</p>
-                    <button onClick={()=> setNowPlaying(currentTrack)}>Play</button>
-                    {/* <button><Link to={`/edit-track/${track._id}`}>Edit</Link></button>
-                    <button onClick={()=>handleDelete(track_.id)}>Delete</button> */}
                 </li>
             ))}
         </ul>
