@@ -7,7 +7,7 @@ const Home = (props) => {
         <>
         <h1>Home</h1>
         <Routes>
-            <Route path='/tracks' element={Tracklist} />
+            <Route path='/tracks' element={<Tracklist tracks = {tracks}/>} />
         </Routes>
         </>
     )
