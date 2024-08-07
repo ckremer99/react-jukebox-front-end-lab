@@ -23,7 +23,7 @@ const handleAddTrack = async (trackFormData) => {
   const newTrack = await trackService.create(trackFormData)
   setTracks([...tracks, newTrack])
   navigate('/')
-}
+};
 
 
   return (
