@@ -19,7 +19,7 @@ const create = async (trackFormData) => {
             },
             body: JSON.stringify(trackFormData)
         })
-        return res.json();
+        return await res.json();
     } catch (error) {
         console.log(error)
     }
