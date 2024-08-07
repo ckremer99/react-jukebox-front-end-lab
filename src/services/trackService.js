@@ -4,7 +4,7 @@ const index = async () => {
     try {
         const res = await fetch(BASE_URL)
         console.log(res.json())
-        return res.json
+        return await res.json()
     } catch (error) {
         console.log(error)
     }
@@ -12,8 +12,11 @@ const index = async () => {
 
 const create = async (trackFormData) => {
     try {
-        const res = await fetch(BASEURL, {
+        const res = await fetch(BASE_URL, {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(trackFormData)
         })
         return res.json();
