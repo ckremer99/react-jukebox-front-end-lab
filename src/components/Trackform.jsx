@@ -3,17 +3,17 @@ import { useState } from 'react'
 
 const TrackForm = (props) => {
     const [formData, setFormData] = useState({title: '', artist: ''});
-
+    
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
         setFormData({title: '', artist: ''})
-      };
+    };
     
 
     const handleChange = (evt) => {
         setFormData({ ...formData, [evt.target.name]: evt.target.value });
-      };
+    };
 
     return (
         <>
