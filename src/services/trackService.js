@@ -23,6 +23,7 @@ const create = async (trackFormData) => {
 }
 
 const deleteTrack = async (trackId) => {
+
     try {
         const res = await fetch(`${BASE_URL}/${trackId}`, {
             method: 'DELETE'
@@ -33,4 +34,4 @@ const deleteTrack = async (trackId) => {
     }
 }
 
-export default { index, create, remove }
+export default { index, create, deleteTrack }
