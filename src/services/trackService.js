@@ -10,4 +10,20 @@ const index = async () => {
     }
 }
 
-export default { index }
+const create = async (trackFormData) => {
+    try {
+        const res = await fetch(BASEURL, {
+            method: 'POST',
+            body: JSON.stringify(trackFormData)
+        })
+        return res.json();
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const deleteTrack = async (trackId) => {
+
+}
+
+export default { index, create, remove }
