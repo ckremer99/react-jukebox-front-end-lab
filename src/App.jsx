@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import TrackForm from './components/Trackform'
 import Home from './components/home.jsx'
@@ -9,6 +9,14 @@ import trackService from './services/trackService'
 const App = () => {
 const [tracks, setTracks] = useState([])
 
+useEffect(() => {
+  const fetchAllTracks = async () => {
+    const tracksData = await trackService.index();
+    setTracks(tracksData)
+  }
+   fetchAllTracks();
+}, [tracks])
+
 const navigate = useNavigate();
 
 const handleAddTrack = async (trackFormData) => {
@@ -17,16 +25,11 @@ const handleAddTrack = async (trackFormData) => {
   navigate('/')
 }
 
-const testSong = [
-  {title: 'Livin on a prayer',
-    artist: 'Bon Jovi'
-  }
-]
 
   return (
     <>
       <Routes>
-        <Route path='/' element={<Home tracks={testSong} />}/>
+        <Route path='/' element={<Home tracks={tracks} />}/>
         <Route path='/add-track' element={<TrackForm formType={"Create"} handleAddTrack={handleAddTrack}/>}/>
         <Route path='/edit-track/:trackId' element={<TrackForm formType={"Edit"}/>}/>
       </Routes>
