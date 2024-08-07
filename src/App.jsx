@@ -15,7 +15,7 @@ useEffect(() => {
     setTracks(tracksData)
   }
    fetchAllTracks();
-}, [tracks])
+}, [])
 
 const navigate = useNavigate();
 
