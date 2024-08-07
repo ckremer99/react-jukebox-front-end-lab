@@ -1,22 +1,25 @@
-const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/tracks`;
 import { Link } from "react-router-dom"
+const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/tracks`;
+import { useEffect } from "react"
 
-const Tracklist = ({tracks, setTracks}) => {
+const Tracklist = ({tracks, handleDeleteTrack}) => {{
+    useEffect(()=> {
+        fetchTracks();
+    }, []);
     return (
         <>
         <ul>
-            {tracks.map((currentTrack, index) => (
-                <li key={index} className='track'>
-                    <h3>{currentTrack.title}</h3>
-                    <p>{currentTrack.artist}</p>
-                    <button onClick={()=> setNowPlaying(currentTrack)}>Play</button>
-                    {/* <button><Link to={`/edit-track/${track._id}`}>Edit</Link></button>
-                    <button onClick={()=>handleDelete(track_.id)}>Delete</button> */}
+        
+            {tracks.map((track) => 
+                <li key={track._id} className='track-card'>
+                    <h3>{track.title}</h3>
+                    <p>{track.artist}</p>
                 </li>
-            ))}
+            )}
+       
         </ul>
         </>
-    )
+    )}
 };
 
 
