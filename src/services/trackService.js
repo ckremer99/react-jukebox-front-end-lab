@@ -37,6 +37,7 @@ const create = async (trackFormData) => {
 }
 
 const updateTrack = async (trackId, trackFormData) => {
+    console.log('requesting')
     try {
         const res = await fetch(`${BASE_URL}/${trackId}`,
             {
