@@ -8,7 +8,7 @@ import trackService from './services/trackService'
 
 const App = () => {
 const [tracks, setTracks] = useState([])
-const [newTrack, setNewTrack] = useState({})
+const [newTrack, setNewTrack] = useState(false)
 
 useEffect(() => {
   const fetchAllTracks = async () => {
@@ -22,15 +22,21 @@ useEffect(() => {
 const navigate = useNavigate();
 
 const handleAddTrack = async (trackFormData) => {
-  setNewTrack(await trackService.create(trackFormData));
+  setNewTrack(!newTrack);
   navigate('/')
 }
 
 const handleUpdateTrack = async (trackId, trackFormData) => {
-  await trackService.updateTrack(trackId, trackFormData)
-  setNewTrack(trackId)
-  navigate('/')
+  try {
+    const res = await trackService.updateTrack(trackId, trackFormData);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    setNewTrack(!newTrack)
+    navigate('/');
+  }
 }
+
 
 const handleDeleteTrack = async (trackId) => {
   console.log('app.js:', trackId)
