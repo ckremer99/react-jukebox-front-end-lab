@@ -27,21 +27,25 @@ const handleAddTrack = async (trackFormData) => {
 }
 
 const handleUpdateTrack = async (trackId, trackFormData) => {
-  setNewTrack(await trackService.updateTrack(trackId, trackFormData))
+  await trackService.updateTrack(trackId, trackFormData)
+  setNewTrack(trackId)
+  navigate('/')
 }
 
 const handleDeleteTrack = async (trackId) => {
   console.log('app.js:', trackId)
   const response = await trackService.deleteTrack(`${trackId}`)
-  setNewTrack()
+  setNewTrack(trackId)
 }
 
   return (
     <>
       <Routes>
         <Route path='/' element={<Home tracks={tracks} handleDeleteTrack={handleDeleteTrack}/>}/>
-        <Route path='/add-track' element={<TrackForm formType={"Create"} handleAddTrack={handleAddTrack}/>}/>
-        <Route path='/edit-track/:trackId' element={<TrackForm formType={"Edit"} handleUpdateTrack={handleUpdateTrack}/>}/>
+        <Route path='/add-track' element={
+          <TrackForm formType={"Create"} handleAddTrack={handleAddTrack} handleUpdateTrack={handleUpdateTrack}/>}/>
+        <Route path='/edit-track/:trackId' element={
+          <TrackForm formType={"Edit"} handleUpdateTrack={handleUpdateTrack} handleAddTrack={handleAddTrack}/>}/>
       </Routes>
     </>
   )
