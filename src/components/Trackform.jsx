@@ -28,7 +28,7 @@ const TrackForm = (props) => {
             setFormData(trackData)
         };
         if (trackId) fetchTrack();
-    }, [trackId])
+    }, [])
 
     return (
         <>
