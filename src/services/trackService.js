@@ -10,6 +10,17 @@ const index = async () => {
     }
 }
 
+const show = async (trackId) => {
+    try {
+        const res = await fetch(BASE_URL)
+        const data = await res.json();
+        const trackData = data.filter(track => track._id === trackId)
+        return trackData[0];
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 const create = async (trackFormData) => {
     try {
         const res = await fetch(BASE_URL, {
@@ -25,7 +36,7 @@ const create = async (trackFormData) => {
     }
 }
 
-const updateTrack = async (trackFormData) => {
+const updateTrack = async (trackId, trackFormData) => {
     try {
         const res = await fetch(`${BASE_URL}/${trackId}`,
             {
@@ -53,4 +64,4 @@ const deleteTrack = async (trackId) => {
     }
 }
 
-export default { index, create, deleteTrack, updateTrack }
+export default { index, create, deleteTrack, updateTrack, show }
