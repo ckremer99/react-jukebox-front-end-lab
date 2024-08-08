@@ -1,5 +1,7 @@
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom';
+import trackService from '../services/trackService';
 
 const TrackForm = (props) => {
     const [formData, setFormData] = useState({title: '', artist: ''});
@@ -7,18 +9,30 @@ const TrackForm = (props) => {
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        props.handleAddTrack(formData);
-        setFormData({ title: '', artist: ''})
+        if (trackId) {
+            props.handleUpdateTrack(trackId, formData)
+        } else {
+            props.handleAddTrack(formData)
+        }
     };
     
+    const { trackId } = useParams()
 
     const handleChange = (evt) => {
         setFormData({ ...formData, [evt.target.name]: evt.target.value });
     };
 
+    useEffect(() => {
+        const fetchTrack = async () => {
+            const trackData = await trackService.show(trackId);
+            setFormData(trackData)
+        };
+        if (trackId) fetchTrack();
+    }, [trackId])
+
     return (
         <>
-            <h1>Create/Edit Track</h1>
+            <h1>{trackId ? 'Edit ' : 'New '} Track</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="title">Title: </label>
                 <input 
