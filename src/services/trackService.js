@@ -41,7 +41,7 @@ const updateTrack = async (trackId, trackFormData) => {
         const res = await fetch(`${BASE_URL}/${trackId}`,
             {
                 method: 'PUT',
-                headers: {'Content-Tyype': 'application/json'},
+                headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(trackFormData)
             }
         )
