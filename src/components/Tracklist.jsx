@@ -12,6 +12,7 @@ const Tracklist = ({tracks, handleDeleteTrack}) => {
                     <h3>{currentTrack.title}</h3>
                     <p>{currentTrack.artist}</p>
                     <button onClick={()=>{handleDeleteTrack(currentTrack._id)}}>Delete</button>
+                    <Link to={`/edit-track/${currentTrack._id}`}>Edit</Link>
                 </div>
             ))}
         </div>

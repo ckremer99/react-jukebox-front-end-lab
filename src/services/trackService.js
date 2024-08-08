@@ -34,13 +34,14 @@ const updateTrack = async (trackFormData) => {
                 body: JSON.stringify(trackFormData)
             }
         )
-        return res.json();
+        return await res.json();
     } catch (error) {
         console.log(error)
     }
 }
 
 const deleteTrack = async (trackId) => {
+    console.log('trackService.js:', trackId)
 
     try {
         const res = await fetch(`${BASE_URL}/${trackId}`, {
