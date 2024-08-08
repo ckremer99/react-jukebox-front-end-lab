@@ -11,6 +11,7 @@ const Tracklist = ({tracks, handleDeleteTrack}) => {
                 <div key={index} className='track'>
                     <h3>{currentTrack.title}</h3>
                     <p>{currentTrack.artist}</p>
+                    <button onClick={()=>{handleDeleteTrack(currentTrack._id)}}>Delete</button>
                 </div>
             ))}
         </div>

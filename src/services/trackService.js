@@ -43,7 +43,7 @@ const updateTrack = async (trackFormData) => {
 const deleteTrack = async (trackId) => {
 
     try {
-        const res = await fetch(`/${BASE_URL}/${trackId}`, {
+        const res = await fetch(`${BASE_URL}/${trackId}`, {
             method: 'DELETE'
         })
         return await res.json();

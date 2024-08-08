@@ -27,7 +27,8 @@ const handleAddTrack = async (trackFormData) => {
 }
 
 const handleDeleteTrack = async (trackId) => {
-  const response = await trackService.deleteTrack(trackId)
+  const response = await trackService.deleteTrack(`${trackId}`)
+  setNewTrack()
 }
 
   return (
