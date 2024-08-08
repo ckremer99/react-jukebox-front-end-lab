@@ -8,6 +8,7 @@ import trackService from './services/trackService'
 
 const App = () => {
 const [tracks, setTracks] = useState([])
+const [newTrack, setNewTrack] = useState({})
 
 useEffect(() => {
   const fetchAllTracks = async () => {
@@ -15,13 +16,13 @@ useEffect(() => {
     setTracks(tracksData)
   }
    fetchAllTracks();
-}, []);
+   navigate('/')
+}, [newTrack]);
 
 const navigate = useNavigate();
 
 const handleAddTrack = async (trackFormData) => {
-  const newTrack = await trackService.create(trackFormData)
-  setTracks([...tracks, newTrack])
+  setNewTrack(await trackService.create(trackFormData));
   navigate('/')
 }
 
