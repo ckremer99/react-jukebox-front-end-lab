@@ -4,8 +4,8 @@ const NowPlaying = ({track}) => {
     if (!track) return null;
     return (
         <>
-        {tracks.map((track, index) => (
-            <div key={index}>
+            <h3>Now Playing</h3>
+            <div>
                 <p>
                     Title: {track.title}
                 </p>
@@ -13,7 +13,6 @@ const NowPlaying = ({track}) => {
                     Artist: {track.artist}
                 </p>
             </div>
-        ))}
         </>
     )
 }

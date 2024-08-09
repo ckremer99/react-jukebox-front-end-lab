@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/tracks`;
 import { useEffect } from "react"
 
-const Tracklist = ({tracks, handleDeleteTrack}) => {
+const Tracklist = ({tracks, handleDeleteTrack, updateNowPlaying}) => {
 
     const trackListStyle = {
         display: 'flex',
@@ -34,6 +34,8 @@ const Tracklist = ({tracks, handleDeleteTrack}) => {
         display: 'flex', 
         justifyContent: 'center',
         margin: '10px',
+        marginTop: '20px',
+        marginBottom: '20px',
     }
 
     return (
@@ -44,6 +46,7 @@ const Tracklist = ({tracks, handleDeleteTrack}) => {
                     <h3>{currentTrack.title}</h3>
                     <p>{currentTrack.artist}</p>
                     <button onClick={()=>{handleDeleteTrack(currentTrack._id)}} style={buttonStyle}>Delete</button>
+                    <button onClick={() => updateNowPlaying({title: currentTrack.title, artist: currentTrack.artist})} style={buttonStyle}>Play</button>
                     <Link to={`/edit-track/${currentTrack._id}`} style={linkStyle}>Edit</Link>
                 </div>
             ))}
