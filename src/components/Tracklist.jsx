@@ -19,6 +19,22 @@ const Tracklist = ({tracks, handleDeleteTrack}) => {
         flexDirection: 'column'
     }
 
+    const buttonStyle = {
+        width: '100px', 
+        height: '50px',
+        margin: '10px',
+    }
+
+    const linkStyle = {
+        width: '100px',
+        heigth: '50px',
+        color: '#ffffff',
+        backgroundColor: '#000000',
+        borderRadius: '5px',
+        display: 'flex', 
+        justifyContent: 'center',
+        margin: '10px',
+    }
 
     return (
         <>
@@ -27,8 +43,8 @@ const Tracklist = ({tracks, handleDeleteTrack}) => {
                 <div key={index} className='track' style={trackStyle}>
                     <h3>{currentTrack.title}</h3>
                     <p>{currentTrack.artist}</p>
-                    <button onClick={()=>{handleDeleteTrack(currentTrack._id)}}>Delete</button>
-                    <Link to={`/edit-track/${currentTrack._id}`}>Edit</Link>
+                    <button onClick={()=>{handleDeleteTrack(currentTrack._id)}} style={buttonStyle}>Delete</button>
+                    <Link to={`/edit-track/${currentTrack._id}`} style={linkStyle}>Edit</Link>
                 </div>
             ))}
         </div>
